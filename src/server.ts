@@ -1,3 +1,3 @@
-import ChatController from './controllers/ChatController'
+import App from './App'
 
-ChatController.listen('3333')
+App.server.listen('3333')
