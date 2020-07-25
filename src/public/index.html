@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Test</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+    
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <form id="register">
+        <input type="text" name="user_id" placeholder="Your user">
+        <button type="submit" id="register" >Registrar</button>
+    </form>
+
+    <form id="chat">
+        <input type="text" name="to_user_id" placeholder="To user">
+        <div class="messages"></div>
+        <input type="text" name="message" placeholder="Message...">
+        <button type="submit">Enviar</button>
+    </form>
+    
+    <script type="text/javascript">
+        var socket = io('http://localhost:3333');
+
+        function renderMessage(msg) {
+            $('.messages').append('<div class="message"><strong>'+ msg.user_id+'</strong>: '+ msg.msg +'</div>')
+        }
+
+        socket.on('previous', function(messages){
+            console.log(messages);
+            for (message of messages.messages){
+                renderMessage(message);
+            };
+        });
+
+        socket.on('received', function(message){
+            renderMessage(message);
+        });
+
+        $('#register').submit(function(event){
+            event.preventDefault();
+
+            var user_id = $('input[name=user_id]').val();
+
+            if(user_id.length){
+                socket.emit('register', JSON.stringify({ user_id }));
+            }
+        });
+
+        $('#chat').submit(function(event) {
+            event.preventDefault();
+
+            var user_id = $('input[name=user_id]').val();
+            var to_user_id = $('input[name=to_user_id]').val();
+            var msg = $('input[name=message]').val();
+            
+            if(user_id.length && msg.length && to_user_id.length){
+                var message = {
+                    user_id,
+                    to_user_id,
+                    msg
+                };
+
+                renderMessage(message);
+
+                msg = JSON.stringify(message);
+
+                setInterval(500);
+                socket.emit('message', msg);
+            }
+        });
+    </script>
+</body>
+</html>
