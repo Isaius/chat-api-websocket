@@ -14,11 +14,15 @@ with another registered user.
 
 To run this application Node must be installed. To run just enter on the project folder via terminal and type the following comand:
 
-`npm run dev`
+```
+npm run dev
+```
 
 or
 
-`yarn dev`
+```
+yarn dev
+```
 
 After that, go to the browser and type or click in the link above:
 
