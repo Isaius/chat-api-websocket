@@ -1,11 +1,8 @@
 import express from 'express'
-import cors from 'cors'
-import mogoose from 'mongoose'
 import path from 'path'
 
 import { createServer, Server } from 'http'
 
-import routes from './routes'
 import socketIo = require('socket.io')
 
 class App {
@@ -17,11 +14,9 @@ class App {
 
     constructor() {
         this.express = express()
-        this.database()
         this.middlewares()
         this.sockets()
         this.listen()
-        this.routes()
         this.view()
         this.user_sockets = []
         this.messages = []
@@ -29,20 +24,8 @@ class App {
 
     private middlewares(): void {
         this.express.use(express.json())
-        this.express.use(cors())
     }
-
-    private database(): void {
-        mogoose.connect('mongodb://localhost:27017/chat', {
-            useNewUrlParser: true,
-            useUnifiedTopology: true
-        })
-    }
-
-    private routes(): void {
-        this.express.use(routes)
-    }
-
+    
     private sockets(): void {
         this.server = createServer(this.express)
         this.io = socketIo(this.server)
