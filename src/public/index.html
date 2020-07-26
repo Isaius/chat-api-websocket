@@ -32,8 +32,12 @@
         }
 
         socket.on('previous', function(messages){
+            messages = JSON.parse(messages);
             console.log(messages);
-            for (message of messages.messages){
+            for (message of messages){
+                if(message.msg == ''){
+                    continue;
+                }
                 renderMessage(message);
             };
         });
