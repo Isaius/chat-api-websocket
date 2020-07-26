@@ -12,7 +12,7 @@ with another registered user.
 
 ## How to run
 
-To run this application Node must be installed. To run just enter on the project folder via terminal and type the following comand:
+To run this application Node must be installed. Just enter on the project folder via terminal and type the following comand:
 
 ```
 npm run dev
@@ -34,7 +34,7 @@ or
 yarn build
 ```
 
-After that, go to the browser and type or click in the link above:
+After that, go to the browser and type or click in the link below:
 
 http://localhost:3333/index.html
 
