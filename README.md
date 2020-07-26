@@ -33,4 +33,4 @@ To test just open two pages and register the users BEFORE send messages or the a
 
 ## Why?
 
-This is just a simple example for learning proposity. Feel free to use. 
+This is just a simple example for learning purpose. Feel free to use. 
