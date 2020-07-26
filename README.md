@@ -26,7 +26,7 @@ yarn dev
 
 After that, go to the browser and type or click in the link above:
 
-`http://localhost:3333/index.html`
+http://localhost:3333/index.html
 
 To test just open two pages and register the users BEFORE send messages or the application will crash.
 
