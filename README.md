@@ -1,5 +1,5 @@
 # chat-api
-API for a simple message real time chat via websocket.
+API for a simple real time message chat via websocket.
 
 
 ![chat-demonstration](https://i.imgur.com/XhkOdvH.gif)
