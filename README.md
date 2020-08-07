@@ -1,5 +1,9 @@
 # chat-api
-API for a simple message chat via websocket.
+API for a simple message real time chat via websocket.
+
+
+![chat-demonstration](https://i.imgur.com/XhkOdvH.gif)
+
 
 ## Technologies
 - NodeJs
